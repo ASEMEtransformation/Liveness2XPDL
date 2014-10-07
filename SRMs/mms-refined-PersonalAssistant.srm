@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="ManageMeetings"/>
+  <activities name="RequestChangeMeeting"/>
+  <activities name="NegotiateMeetingDate" functionality=""/>
+  <activities name="LearnUserHabits" functionality="learn the hours and days that the person prefers to have meetings"/>
+  <activities name="SendNewMessage"/>
+  <activities name="ReceiveNewResponse"/>
+  <capabilities name="RequestNewMeeting_PersonalAssistant" activities="//@activities.4 //@activities.5"/>
+  <roles activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3 //@activities.4 //@activities.5" liveness="PersonalAssistant = (ManageMeetings. LearnUserHabits)~ || (NegotiateMeetingDate)~&#xA;
+ManageMeetings = GetUserRequest. (ReadSchedule | RequestChangeMeeting | RequestNewMeeting). ShowResults&#xA;
+LearnUserHabits = LearnUserPreference. UpdateUserPreferences&#xA;
+RequestNewMeeting = SendNewRequest. ReceiveNewResults. UpdateSchedule&#xA;
+RequestChangeMeeting = SendChangeRequest. ReceiveChangeResults. UpdateSchedule&#xA;
+NegotiateMeetingDate = ReceiveProposedDate. (DecideResponse. SendResults. ReceiveOutcome)+. UpdateSchedule" name="PersonalAssistant" capabilities="//@capabilities.0"/>
+</SRM:SRMmodel>

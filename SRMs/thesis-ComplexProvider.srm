@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="RequestForServicesSP"/>
+  <activities name="ReceiveRequestMessage"/>
+  <activities name="ProcessRequest"/>
+  <activities name="SendResponseMessage"/>
+  <activities name="DecideRouteType"/>
+  <activities name="RequestForServicesSR"/>
+  <activities name="SortRoutes"/>
+  <activities name="DecidePOITypes"/>
+  <activities name="DecidePOIs"/>
+  <activities name="SendRequestMessage"/>
+  <activities name="ReceiveResponseMessage"/>
+  <roles activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3 //@activities.4 //@activities.5
+//@activities.6 //@activities.7 //@activities.8 //@activities.9" 
+liveness="ComplexProvider= RequestForServicesSP~&#xA;
+RequestForServicesSP=ReceiveRequestMessage.ProcessRequest.SendResponseMessage&#xA;
+ProcessRequest = (DecideRouteType.RequestForServicesSR.SortRoutes) | (DecidePOITypes.RequestForServicesSR.DecidePOIs.RequestForServicesSR)&#xA;
+RequestForServicesSR = SendRequestMessage.ReceiveResponseMessage
+" name="ComplexProvider"/>
+</SRM:SRMmodel>
