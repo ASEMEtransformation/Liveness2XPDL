@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="SendChangeRequest" functionality="//@functionalities.0"/>
+  <activities name="ReceiveChangeResults" functionality="//@functionalities.1"/>
+  <activities name="SendNewRequest" functionality="//@functionalities.2"/>
+  <activities name="ReceiveNewResults" functionality="//@functionalities.3"/>
+  <activities name="ReceiveOutcome" functionality="//@functionalities.4"/>
+  <activities name="SendResults" functionality="//@functionalities.5"/>
+  <activities name="DecideResponse" functionality="//@functionalities.6"/>
+  <activities name="ReceiveProposedDate" functionality="//@functionalities.7"/>
+  <activities name="ShowResults" functionality="//@functionalities.8"/>
+  <activities name="ReadSchedule" functionality="//@functionalities.9"/>
+  <activities name="GetUserRequest" functionality="//@functionalities.10"/>
+  <activities name="LearnUserPreference" functionality="//@functionalities.11"/>
+  <activities name="UpdateUserPreferences" functionality="//@functionalities.12"/>
+  <activities name="SendChangeResults" functionality="//@functionalities.13"/>
+  <activities name="ProcessChangeRequest" functionality="//@functionalities.14"/>
+  <activities name="ReceiveChangeRequest" functionality="//@functionalities.15"/>
+  <activities name="ReceiveNewRequest" functionality="//@functionalities.16"/>
+  <activities name="ProcessNewRequest" functionality="//@functionalities.17"/>
+  <activities name="SendNewResults" functionality="//@functionalities.18"/>
+  <activities name="DecideOnDate" functionality="//@functionalities.19"/>
+  <activities name="SendProposedDate" functionality="//@functionalities.20"/>
+  <activities name="ReceiveResults" functionality="//@functionalities.21"/>
+  <activities name="SendOutcome" functionality="//@functionalities.22"/>
+  <capabilities name="LearnUserHabits" capability_activities="//@activities.11 //@activities.12"/>
+  <capabilities name="ManageMeetings" capability_activities="//@activities.10 //@activities.9 //@activities.8"/>
+  <capabilities name="NegotiateMeetingDate_PersonalAssistant" capability_activities="//@activities.4 //@activities.5 //@activities.6 //@activities.7"/>
+  <capabilities name="RequestNewMeeting_PersonalAssistant" capability_activities="//@activities.2 //@activities.3"/>
+  <capabilities name="RequestChangeMeeting_PersonalAssistant" capability_activities="//@activities.0 //@activities.1"/>
+  <capabilities name="NegotiateMeetingDate_MeetingsManager" capability_activities="//@activities.19 //@activities.20 //@activities.21 //@activities.22"/>
+  <capabilities name="RequestNewMeeting_MeetingsManager" capability_activities="//@activities.16 //@activities.17 //@activities.18"/>
+  <capabilities name="RequestChangeMeeting_MeetingsManager" capability_activities="//@activities.15 //@activities.14 //@activities.13"/>
+  <roles role_activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3 //@activities.4 //@activities.5 //@activities.6 //@activities.7 //@activities.8 //@activities.9 //@activities.10 //@activities.11 //@activities.12" liveness="PersonalAssistant= (ManageMeetings.LearnUserHabits)~ || NegotiateMeetingDate_PersonalAssistant~&#xA;ManageMeetings=GetUserRequest.(ReadSchedule|RequestNewMeeting_PersonalAssistant|RequestChangeMeeting_PersonalAssistant).ShowResults &#xD;&#xA;LearnUserHabits=LearnUserPreference.UpdateUserPreferences&#xA;RequestNewMeeting_PersonalAssistant=SendNewRequest.ReceiveNewResults.UpdateSchedule&#xD;&#xA;RequestChangeMeeting_PersonalAssistant=SendChangeRequest.ReceiveChangeResults.UpdateSchedule&#xA;NegotiateMeetingDate_PersonalAssistant=ReceiveProposedDate.(DecideResponse.SendResults.ReceiveOutcome)+.UpdateSchedule" name="PersonalAssistant" capabilities="//@capabilities.0 //@capabilities.1 //@capabilities.2 //@capabilities.3 //@capabilities.4"/>
+  <roles role_activities="//@activities.13 //@activities.14 //@activities.15 //@activities.16 //@activities.17 //@activities.18 //@activities.19 //@activities.20 //@activities.21 //@activities.22" liveness="MeetingsManager=NegotiateMeetingDate_MeetingsManager~|| RequestNewMeeting_MeetingsManager~||RequestChangeMeeting_MeetingsManager~&#xA;NegotiateMeetingDate_MeetingsManager=DecideOnDate.SendProposedDate.(ReceiveResults.DecideOnDate.SendOutcome)+&#xD;RequestNewMeeting_MeetingsManager=ReceiveNewRequest.ProcessNewRequest.SendNewResults&#xD;RequestChangeMeeting_MeetingsManager=ReceiveChangeRequest.ProcessChangeRequest.SendChangeResults&#xD;ProcessNewRequest=NegotiateMeetingDate_MeetingsManager.UpdateGlobalSchedule&#xD;&#xA;ProcessChangeRequest=NegotiateMeetingDate_MeetingsManager.UpdateGlobalSchedule" name="MeetingsManager" capabilities="//@capabilities.5 //@capabilities.6 //@capabilities.7"/>
+  <functionalities activities="//@activities.0"/>
+  <functionalities activities="//@activities.1"/>
+  <functionalities activities="//@activities.2"/>
+  <functionalities activities="//@activities.3"/>
+  <functionalities activities="//@activities.4"/>
+  <functionalities activities="//@activities.5"/>
+  <functionalities activities="//@activities.6"/>
+  <functionalities activities="//@activities.7"/>
+  <functionalities activities="//@activities.8"/>
+  <functionalities activities="//@activities.9"/>
+  <functionalities activities="//@activities.10"/>
+  <functionalities activities="//@activities.11"/>
+  <functionalities activities="//@activities.12"/>
+  <functionalities activities="//@activities.13"/>
+  <functionalities activities="//@activities.14"/>
+  <functionalities activities="//@activities.15"/>
+  <functionalities activities="//@activities.16"/>
+  <functionalities activities="//@activities.17"/>
+  <functionalities activities="//@activities.18"/>
+  <functionalities activities="//@activities.19"/>
+  <functionalities activities="//@activities.20"/>
+  <functionalities activities="//@activities.21"/>
+  <functionalities activities="//@activities.22"/>
+</SRM:SRMmodel>
