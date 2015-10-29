@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="RequestForServicesSR"/>
+  <activities name="SendRequestMessage"/>
+  <activities name="ReceiveResponseMessage"/>
+  <roles activities="//@activities.0 //@activities.1 //@activities.2" 
+liveness="PersonalAssistant = RequestForServicesSR&#xA;RequestForServicesSR=SendRequestMessage.ReceiveResponseMessage" name="PersonalAssistant"/>
+</SRM:SRMmodel>
+

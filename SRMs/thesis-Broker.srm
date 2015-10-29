@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="RequestForServicesSP"/>
+  <activities name="ReceiveRequestMessage"/>
+  <activities name="ProcessRequest"/>
+  <activities name="SendResponseMessage"/>
+  <activities name="ServiceMatch"/>
+  <activities name="InvokeDataManagement"/>
+  <activities name="RequestForServicesSR"/>
+  <activities name="SendRequestMessage"/>
+  <activities name="ReceiveResponseMessage"/>
+  <roles activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3 //@activities.4 //@activities.5
+//@activities.6 //@activities.7 //@activities.8" 
+liveness="Broker = RequestForServicesSP~&#xA;
+RequestForServicesSP=ReceiveRequestMessage.ProcessRequest.SendResponseMessage&#xA;
+ProcessRequest = ServiceMatch.[(InvokeDataManagement|RequestForServicesSR)]&#xA;
+RequestForServicesSR = SendRequestMessage.ReceiveResponseMessage
+" name="Broker"/>
+</SRM:SRMmodel>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="RequestChangeMeeting"/>
+  <activities name="NegotiateMeetingDate"/>
+  <activities name="SelectMeetingDate" functionality="either by selecting a date based on the participants agendas or through a negotiation protocol"/>
+  <activities name="ReceiveNewMessage"/>
+  <activities name="SendNewResponse"/>
+  <capabilities name="RequestNewMeeting_MeetingsManager" activities="//@activities.2 //@activities.3 //@activities.4"/>
+  <roles activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3 //@activities.4" liveness="MeetingsManager = RequestNewMeeting~&#xA;RequestNewMeeting=ReceiveNewRequest.SelectMeetingDate.SendNewResults" name="MeetingsManager" capabilities="//@capabilities.0"/>
+</SRM:SRMmodel>
